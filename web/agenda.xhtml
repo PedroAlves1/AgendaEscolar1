@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" 
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+        <title> Você clicou em um botão </title>
+    </h:head>
+    <h:body style="font-size: 10px;">
+        <p:button outcome="Início" value="Início" icon="ui-icon-star" href="index.xhtml">  
+            <f:param name="Início" value="80" />  
+        </p:button> 
+        <p:button outcome="Minha Agenda" value="Minha Agenda" icon="ui-icon-star" href="agenda.xhtml" disabled="true">
+            <f:param name="Minha Agenda" value="80" />
+        </p:button>
+        <br/>
+        <h:form id="form">
+            <p:growl id="messages" showDetail="true"/>  
+
+            <p:contextMenu for="tabela" widgetVar="cMenu">     
+                <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('tabelaTable').showCellEditor();
+                        return false;"/>    
+                <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>    
+            </p:contextMenu>   
+
+            <p:dataTable id="tabela" editable="true" editMode="cell">
+                <p:ajax event="cellEdit" listener="#{tableBean.onCellEdit}" update=":form:messages" />  
+                <p:column headerText="Título" style="width:25%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{n.nome}" /></f:facet>  
+                        <f:facet name="input"><p:inputText id="modelInput" value="#{n.nome}" style="width:96%"/></f:facet>  
+                    </p:cellEditor>
+                </p:column>  
+                <p:column headerText="Assunto"> <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{n.nome}" /></f:facet>  
+                        <f:facet name="input"><p:inputText value="#{n.nome}" style="width:96%" label="Year"/></f:facet>  
+
+                    </p:cellEditor>
+                </p:column>  
+                <p:column headerText="Comentários">
+                    <p:cellEditor>  
+                        <f:facet name="output">Comentários</f:facet>
+                            #{n.nome}
+                    </p:cellEditor>  
+                </p:column>  
+                <p:column headerText="Status">
+                    <p:cellEditor>  
+
+                        <f:facet name="header">Status</f:facet>
+                    </p:cellEditor>  
+
+                </p:column>  
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
