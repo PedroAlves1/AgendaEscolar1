@@ -29,26 +29,16 @@
             <p:dialog id="basicDialog" header="Erro: Você não está logado!" widgetVar="dlg1">  
             <h:outputText value="Você precisa fazer o login para exibir esta página!" />  
             </p:dialog>  
-
+            
             <br/>
             <br/>
             <br/>
             <br/>
             <br/>
-
-        </h:form>
-        <h:form id="registro" style="font-size: 13px" >
-
-            <h:outputText value="Para se registrar, preencha os campos a seguir:"/><br/>
-            <h:outputText value="Usuário: "/> <p:inputText value="#{Pessoa.nome}"/> <br/>
-            <h:outputText value="Senha: "/> <p:password value="#{Pessoa.senha}" feedback="true" /> <br/>
-            <h:outputText value="Email: "/> <p:inputText value="#{Pessoa.email}" /> <br/>
-            <h:selectBooleanCheckbox
-                title="emailUpdates"
-                value="#{jsfexample.wantsEmailUpdates}" >
-            </h:selectBooleanCheckbox>
-            <h:outputText value="Desejo receber notificações por email."/><br/>
-            <p:commandButton value="Registrar"/>
+            <h:outputText value="Para acessar o site é necessário se cadastrar, caso não tenha uma conta crie ela cçicando no botão abaixo:" /> <br />
+              <p:button outcome="Registrar" value="Cadastrar" icon="ui-icon-star" href="registro.xhtml" disabled="false">
+              <f:param name="Cadastro" value="80" />
+              </p:button> 
         </h:form>
     </h:body>
 </html>

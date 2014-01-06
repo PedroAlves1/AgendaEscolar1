@@ -24,7 +24,10 @@ public class AgendaController {
         public void Adicionar(){
             Agenda n;
             n = new Agenda();
-            n.setAssunto("Assunto sobre qual será o trabalho");
+            n.setAssunto("Assunto sobre qual será o trabalho/tarefa");
+            n.setMateria("Matéria");
+            n.setComentarios("Comentários sobre o trabalho/tarefa");
+            n.setStatus("Status (Finalizado, em andamento, cancelado...) ");
             agenda.add(n);
         }
 		

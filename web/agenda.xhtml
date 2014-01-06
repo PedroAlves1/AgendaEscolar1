@@ -24,10 +24,10 @@
             </p:contextMenu>   
 
             <p:dataTable id="agenda" value="#{Agenda.list}" editable="true" editMode="cell" var="n" paginator="true" rows="10" >
-                <p:column headerText="Título" style="width:25%">
+                <p:column headerText="Matéria" style="width:25%">
                     <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{n.assunto}" /></f:facet>  
-                        <f:facet name="input"><p:inputText id="modelInput" value="#{n.assunto}" style="width:96%"/></f:facet>  
+                        <f:facet name="output"><h:outputText value="#{n.materia}" /></f:facet>  
+                        <f:facet name="input"><p:inputText id="modelInput" value="#{n.materia}" style="width:96%"/></f:facet>  
                     </p:cellEditor>
                 </p:column>  
                 <p:column headerText="Assunto"> <p:cellEditor>
@@ -36,6 +36,23 @@
                         
                     </p:cellEditor>
                 </p:column>  
+                
+                <p:column headerText="Comentários">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{n.comentarios}" /> </f:facet>
+                        <f:facet name="input"><p:inputText value="#{n.comentarios}" style="width:96%" /></f:facet>  
+
+                    </p:cellEditor>
+                </p:column>
+                
+                        <p:column headerText="Status">
+                         <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{n.status}" /> </f:facet>
+                        <f:facet name="input"><p:inputText value="#{n.status}" style="width:96%" /></f:facet>  
+
+                    </p:cellEditor>
+                </p:column>
+
  
             </p:dataTable>
             <p:commandButton value="Adicionar" action="#{Agenda.Adicionar}" update="agenda" />
