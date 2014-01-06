@@ -17,42 +17,28 @@
         </p:button>
         <br/>
         <h:form id="form">
-            <p:growl id="messages" showDetail="true"/>  
-
-            <p:contextMenu for="tabela" widgetVar="cMenu">     
-                <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('tabelaTable').showCellEditor();
+          <p:contextMenu for="agenda" widgetVar="cMenu">     
+                <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('agendaTable').showCellEditor();
                         return false;"/>    
-                <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>    
+                <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide();"/>    
             </p:contextMenu>   
 
-            <p:dataTable id="tabela" editable="true" editMode="cell">
-                <p:ajax event="cellEdit" listener="#{tableBean.onCellEdit}" update=":form:messages" />  
+            <p:dataTable id="agenda" value="#{Agenda.list}" editable="true" editMode="cell" var="n" paginator="true" rows="10" >
                 <p:column headerText="Título" style="width:25%">
                     <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{n.nome}" /></f:facet>  
-                        <f:facet name="input"><p:inputText id="modelInput" value="#{n.nome}" style="width:96%"/></f:facet>  
+                        <f:facet name="output"><h:outputText value="#{n.assunto}" /></f:facet>  
+                        <f:facet name="input"><p:inputText id="modelInput" value="#{n.assunto}" style="width:96%"/></f:facet>  
                     </p:cellEditor>
                 </p:column>  
                 <p:column headerText="Assunto"> <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{n.nome}" /></f:facet>  
-                        <f:facet name="input"><p:inputText value="#{n.nome}" style="width:96%" label="Year"/></f:facet>  
-
+                        <f:facet name="output"><h:outputText value="#{n.assunto}" /></f:facet>  
+                        <f:facet name="input"><p:inputText value="#{n.assunto}" style="width:96%" /></f:facet>  
+                        
                     </p:cellEditor>
                 </p:column>  
-                <p:column headerText="Comentários">
-                    <p:cellEditor>  
-                        <f:facet name="output">Comentários</f:facet>
-                            #{n.nome}
-                    </p:cellEditor>  
-                </p:column>  
-                <p:column headerText="Status">
-                    <p:cellEditor>  
-
-                        <f:facet name="header">Status</f:facet>
-                    </p:cellEditor>  
-
-                </p:column>  
+ 
             </p:dataTable>
+            <p:commandButton value="Adicionar" action="#{Agenda.Adicionar}" update="agenda" />
         </h:form>
     </h:body>
 </html>

@@ -1,6 +1,6 @@
 package br.com.agenda.model;
 
-import java.util.Date;  
+import java.util.Calendar;  
 
 public class Agenda {
 
@@ -8,7 +8,7 @@ public class Agenda {
 	private String materia;
         private String comentarios;
         private String status;
-        private Date data;
+        private Calendar data;
 
     public String getAssunto() {
         return assunto;
@@ -42,15 +42,13 @@ public class Agenda {
         this.status = status;
     }
 
-    public Date getData() {
+    public Calendar getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(Calendar data) {
         this.data = data;
     }
 
-	
-//	
 	
 }
