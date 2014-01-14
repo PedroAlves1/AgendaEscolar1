@@ -1,15 +1,22 @@
 package br.com.agenda.model;
 
 import java.util.Calendar;  
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+@Entity
 public class Agenda {
-
+        @Id @GeneratedValue
+        private Integer id;
 	private String assunto;
 	private String materia;
         private String comentarios;
         private String status;
+        @Temporal(TemporalType.DATE)
         private Calendar data;
-
+    
     public String getAssunto() {
         return assunto;
     }

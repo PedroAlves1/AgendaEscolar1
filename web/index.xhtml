@@ -21,9 +21,9 @@
             </p:commandButton>
             <br/>
             <h:outputText value="Usuário: "/>
-            <p:inputText value="#{Pessoa.nome}"/> <br/>
+            <p:inputText value="#{Pessoa.p.nome}"/> <br/>
             <h:outputText value="Senha: "/>
-            <p:password value="#{Pessoa.senha}" />  
+            <p:password value="#{Pessoa.p.senha}" />  
             <p:commandButton action="#{Pessoa.clique()}" value="Login" /><br/>
             <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />  <br/>
             <p:dialog id="basicDialog" header="Erro: Você não está logado!" widgetVar="dlg1">  

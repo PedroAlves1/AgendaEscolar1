@@ -28,12 +28,12 @@ and open the template in the editor.
         <h:form id="registro" style="font-size: 13px" >
 
             <h:outputText value="Para se registrar, preencha os campos a seguir:"/><br/>
-            <h:outputText value="Usuário: "/> <p:inputText value="#{Pessoa.nome}"/> <br/>
-            <h:outputText value="Senha: "/> <p:password value="#{Pessoa.senha}" feedback="true" /> <br/>
-            <h:outputText value="Email: "/> <p:inputText value="#{Pessoa.email}" /> <br/>
+            <h:outputText value="Usuário: "/> <p:inputText value="#{Pessoa.p.nome}"/> <br/>
+            <h:outputText value="Senha: "/> <p:password value="#{Pessoa.p.senha}" feedback="true" /> <br/>
+            <h:outputText value="Email: "/> <p:inputText value="#{Pessoa.p.email}" /> <br/>
             <h:selectBooleanCheckbox
                 title="emailUpdates"
-                value="#{jsfexample.wantsEmailUpdates}" >
+                value="#{jsfexample.emailn}" >
             </h:selectBooleanCheckbox>
             <h:outputText value="Desejo receber notificações por email."/><br/>
             <p:commandButton value="Registrar"/>

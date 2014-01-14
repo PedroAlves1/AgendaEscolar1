@@ -1,5 +1,6 @@
 package br.com.agenda.controller;
 
+import br.com.agenda.model.Pessoa;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -10,21 +11,21 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean(name="Pessoa")
 public class PessoaController {
-private String nome;
-private String senha;
-private String email;
+    private Pessoa p;
 
-    public String getEmail() {
-        return email;
+    public Pessoa getP() {
+        return p;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setP(Pessoa p) {
+        this.p = p;
     }
+    
+    
 public String clique(){
-    if (nome.equals("a")&&
-     senha.equals("a")){
-        return "agenda.xhtml";
+    if (p.getNome().equals("a")&&
+     p.getSenha().equals("a")){
+        return "agenda?faces-redirect=true";
     }
     else{
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Senha ou Usuário Incorreto(s) ", "O usuário e a senha não correspondem a nenhuma conta cadastrada.")); 
@@ -36,21 +37,6 @@ public String clique(){
         
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 
 
     
