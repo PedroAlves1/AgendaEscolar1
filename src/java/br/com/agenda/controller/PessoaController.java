@@ -1,9 +1,12 @@
 package br.com.agenda.controller;
 
+import br.com.agenda.dao.JpaUtil;
+import br.com.agenda.dao.PessoaDao;
 import br.com.agenda.model.Pessoa;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -12,6 +15,10 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name="Pessoa")
 public class PessoaController {
     private Pessoa p;
+
+    public PessoaController() {
+        this.p = new Pessoa();
+    }
 
     public Pessoa getP() {
         return p;
@@ -23,18 +30,23 @@ public class PessoaController {
     
     
 public String clique(){
-    if (p.getNome().equals("a")&&
-     p.getSenha().equals("a")){
-        return "agenda?faces-redirect=true";
-    }
+    EntityManager em = JpaUtil.getEntityManager();
+    PessoaDao dao = new PessoaDao (em);
+    Pessoa u = dao.login(p.getNome(), p.getSenha());
+    
+    if (u!=null){
+            return "agenda?faces-redirect=true";
+        }
     else{
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Senha ou Usuário Incorreto(s) ", "O usuário e a senha não correspondem a nenhuma conta cadastrada.")); 
-        return"";
+    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Senha ou Usuário Incorreto(s) ", "O usuário e a senha não correspondem a nenhuma conta cadastrada."));        
+    return "";
     }
 }
     public String registro(){
-    return "";
-        
+    EntityManager em = JpaUtil.getEntityManager();
+    PessoaDao dao = new PessoaDao (em);
+    dao.insert(p);
+    return "index";
     }
 
 
@@ -43,3 +55,4 @@ public String clique(){
     
     
 }
+//             
