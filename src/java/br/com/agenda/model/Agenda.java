@@ -1,12 +1,8 @@
 package br.com.agenda.model;
 
-import br.com.agenda.dao.AgendaDao;
-import br.com.agenda.dao.JpaUtil;
 import java.io.Serializable;
 import java.util.Calendar;  
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;

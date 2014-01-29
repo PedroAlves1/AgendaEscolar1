@@ -33,7 +33,7 @@ public class AgendaController {
             n.setStatus("Status (Finalizado, em andamento, cancelado...) ");
             agenda.add(n);
         }
-                public String salvar(){
+       public String salvar(){
     EntityManager em = JpaUtil.getEntityManager();
     AgendaDao dao = new AgendaDao (em);
     //dao.insert();
