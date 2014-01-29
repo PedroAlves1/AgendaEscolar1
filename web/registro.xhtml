@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html" 
     xmlns:p="http://primefaces.org/ui"
-    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Registro</title>
         <h:outputStylesheet name="view.css" library="css" />
@@ -30,13 +31,15 @@ and open the template in the editor.
             <h:outputText value="Para se registrar, preencha os campos a seguir:"/><br/>
             <h:outputText value="Usuário: "/> <p:inputText value="#{Pessoa.p.nome}"/> <br/>
             <h:outputText value="Senha: "/> <p:password value="#{Pessoa.p.senha}" feedback="true" /> <br/>
-            <h:outputText value="Email: "/> <p:inputText value="#{Pessoa.p.email}" /> <br/>
-            <h:selectBooleanCheckbox
+            <h:outputText value="Email: "/> <p:inputText value="#{Pessoa.p.email}" disabled="true" /> <br/>
+            <h:selectBooleanCheckbox disabled="true"
                 title="emailUpdates"
                 value="#{jsfexample.emailn}" >
             </h:selectBooleanCheckbox>
-            <h:outputText value="Desejo receber notificações por email."/><br/>
-            <p:commandButton value="Registrar"/>
+            
+            <h:outputText value="Desejo receber notificações por email." /><br/>
+            
+            <p:commandButton value="Registrar" action="#{Pessoa.registro()}"/>
         </h:form>
     </body>
 </html>
